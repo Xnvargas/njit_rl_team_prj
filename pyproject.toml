@@ -19,7 +19,8 @@ dependencies = [
     "gymnasium",
     "psutil",
     "minecraft_launcher_lib",
-    "javascript"
+    "javascript",
+    "pysqlite3-binary"
 ]
 
 [build-system]

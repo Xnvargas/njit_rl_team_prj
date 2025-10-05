@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+import pysqlite3
+import sys
+sys.modules["sqlite3"] = pysqlite3
+
 import random
 import re
 
@@ -7,11 +11,10 @@ import voyager.utils as U
 from voyager.prompts import load_prompt
 from voyager.utils.json_utils import fix_and_parse_json
 
-from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 from langchain.schema import HumanMessage, SystemMessage
 from langchain.vectorstores import Chroma
 
-from voyager.utils.watsonx import init_llm_client
+from voyager.utils.watsonx import init_llm_client, init_embedding_client
 
 class CurriculumAgent:
     def __init__(
@@ -48,10 +51,7 @@ class CurriculumAgent:
             self.failed_tasks = []
             self.qa_cache = {}
         # vectordb for qa cache
-        embeddings = HuggingFaceBgeEmbeddings(
-            model_name="BAAI/bge-base-en-v1.5",
-            model_kwargs={"device": "cuda"}, # GPU
-        )
+        embeddings = init_embedding_client()
 
         self.qa_cache_questions_vectordb = Chroma(
             collection_name="qa_cache_questions_vectordb",
