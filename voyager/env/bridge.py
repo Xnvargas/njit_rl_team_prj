@@ -98,7 +98,7 @@ class VoyagerEnv(gym.Env):
             if res.status_code != 200:
                 self.mineflayer.stop()
                 raise RuntimeError(
-                    f"Minecraft server reply with code {res.status_code}"
+                    f"Minecraft server reply with code {res.status_code}: {res.text}"
                 )
             return res.json()
 

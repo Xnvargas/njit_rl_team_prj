@@ -1,14 +1,17 @@
+import pysqlite3
+import sys
+sys.modules["sqlite3"] = pysqlite3
+
 import os
 
 import voyager.utils as U
-from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 from langchain.schema import HumanMessage, SystemMessage
 from langchain.vectorstores import Chroma
 
 from voyager.prompts import load_prompt
 from voyager.control_primitives import load_control_primitives
 
-from voyager.utils.watsonx import init_llm_client
+from voyager.utils.watsonx import init_llm_client, init_embedding_client
 
 class SkillManager:
     def __init__(
@@ -35,10 +38,7 @@ class SkillManager:
         self.retrieval_top_k = retrieval_top_k
         self.ckpt_dir = ckpt_dir
 
-        embeddings = HuggingFaceBgeEmbeddings(
-            model_name="BAAI/bge-base-en-v1.5",
-            model_kwargs={"device": "cuda"}, # GPU
-        )
+        embeddings = init_embedding_client()
 
         self.vectordb = Chroma(
             collection_name="skill_vectordb",
