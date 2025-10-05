@@ -5,7 +5,28 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "setuptools",
     "langchain>=0.3.27",
     "langchain-ibm>=0.3.18",
+    "langchain_community",
     "python-dotenv>=1.1.1",
+    "chromadb>=0.5.4,<0.6",
+    "tqdm",
+    "openai",
+    "chardet",
+    "tiktoken",
+    "requests",
+    "gymnasium",
+    "psutil",
+    "minecraft_launcher_lib",
+    "javascript"
 ]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["voyager*"]
+exclude = ["skill_library*", "better-respawn*", "scripts*", ".venv*"]
