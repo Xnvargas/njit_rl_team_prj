@@ -4,13 +4,10 @@ This project demonstrates how to use IBM WatsonX AI with LangChain for language 
 
 ## Setup
 
-Before running the application, you need to install the project dependencies:
+Before running the application, you need to install the project dependencies using the .devcontainer:
 
-```bash
-uv sync
-```
-
-This command will install all required packages specified in `pyproject.toml`.
+1. Open the repository in VSCode
+2. Ctrl+P > Dev Containers: Reopen in Container
 
 ### Environment Variables
 
