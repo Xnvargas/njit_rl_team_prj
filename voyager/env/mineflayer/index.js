@@ -29,7 +29,8 @@ app.post("/start", (req, res) => {
     bot = mineflayer.createBot({
         host: process.env.MC_HOST || "host.docker.internal", // minecraft server ip
         port: req.body.port, // minecraft server port
-        username: "bot",
+        username: 'ashleyrosedooley@yahoo.com',
+        auth: 'microsoft',
         disableChatSigning: true,
         checkTimeoutInterval: 60 * 60 * 1000,
     });
@@ -104,7 +105,7 @@ app.post("/start", (req, res) => {
         bot.loadPlugin(tool);
         bot.loadPlugin(collectBlock);
         bot.loadPlugin(pvp);
-        bot.loadPlugin(minecraftHawkEye);
+        bot.loadPlugin(minecraftHawkEye.default ?? minecraftHawkEye);
 
         // bot.collectBlock.movements.digCost = 0;
         // bot.collectBlock.movements.placeCost = 0;

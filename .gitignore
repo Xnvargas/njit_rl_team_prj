@@ -13,5 +13,13 @@ wheels/
 *.env
 
 # Other
+node_modules/
+/workspaces/njit_rl_team_prj/node_modules
 better-respawn/
+/workspaces/njit_rl_team_prj/better-respawn
 logs/
+/workspaces/njit_rl_team_prj/logs
+ckpt/
+/workspaces/njit_rl_team_prj/ckpt
+skill_library/
+/workspaces/njit_rl_team_prj/skill_library

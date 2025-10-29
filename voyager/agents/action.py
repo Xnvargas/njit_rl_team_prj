@@ -78,12 +78,9 @@ class ActionAgent:
             "placeItem",
             "smeltItem",
             "killMob",
+            "useChest",
+            "mineflayer",
         ]
-        if not self.llm.model_name == "gpt-3.5-turbo":
-            base_skills += [
-                "useChest",
-                "mineflayer",
-            ]
         programs = "\n\n".join(load_control_primitives_context(base_skills) + skills)
         response_format = load_prompt("action_response_format")
         system_message_prompt = SystemMessagePromptTemplate.from_template(
