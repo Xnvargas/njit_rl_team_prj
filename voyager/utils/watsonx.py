@@ -15,7 +15,6 @@ def init_llm_client():
         watsonx_key = os.environ.get("WATSONX_APIKEY")
         watsonx_project = os.environ.get("WATSONX_PROJECT") 
         parameters = TextChatParameters(
-            max_completion_tokens=2000,
             temperature=0.5,
             top_p=1,
         )

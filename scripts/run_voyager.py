@@ -7,6 +7,7 @@ MC_PORT = os.environ.get("MC_PORT")
 
 voyager = Voyager(
     mc_port=MC_PORT,
+    resume=False,
 )
 
 voyager.learn()

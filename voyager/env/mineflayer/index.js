@@ -15,12 +15,115 @@ const OnSave = require("./lib/observation/onSave");
 const Chests = require("./lib/observation/chests");
 const { plugin: tool } = require("mineflayer-tool");
 
+const mineflayerViewer = require('prismarine-viewer').mineflayer;
+const webInv = require('mineflayer-web-inventory');
+
+const { spawn } = require('child_process')
+const net = require('net')
+global.THREE = require('three')
+global.Worker = require('worker_threads').Worker
+const { createCanvas } = require('node-canvas-webgl/lib')
+
+const { Viewer, WorldView } = require('prismarine-viewer/viewer');
+
 let bot = null;
 
 const app = express();
 
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
+
+// Prismarine Viewer -- browser pov & web inventory
+async function startBrowserViewer(bot) {
+    const viewPort = Number(process.env.PV_PORT || 3001);
+    const invPort = Number(process.env.INVENTORY_PORT || 3002);
+    const viewDistance = Number(process.env.RECORDING_VIEW_DISTANCE || 4);
+
+    // POV viewer
+    viewerServer = mineflayerViewer(bot, { port: viewPort, firstPerson: true, viewDistance });
+
+    // Web inventory
+    inventoryServer = webInv.listen(bot, { port: invPort });
+
+    return { viewerServer, inventoryServer };
+}
+
+// Prismarine Viewer - recording
+async function startRecording(bot) {
+    const RECORDING_FRAMES = process.env.RECORDING_FRAMES || '200';
+    const RECORDING_WIDTH = process.env.RECORDING_WIDTH || '512';
+    const RECORDING_HEIGHT = process.env.RECORDING_HEIGHT || '512';
+    const RECORDING_VIEW_DISTANCE = process.env.RECORDING_VIEW_DISTANCE || '4';
+    const RECORDING_OUTPUT = process.env.RECORDING_OUTPUT || './output.mp4';
+
+    const canvas = createCanvas(RECORDING_WIDTH, RECORDING_HEIGHT);
+    const renderer = new THREE.WebGLRenderer({ canvas });
+    const viewer = new Viewer(renderer);
+
+    if (!viewer.setVersion(bot.version)) {
+        console.error('[record] viewer.setVersion failed (MC version mismatch)');
+        return;
+    }
+
+    // Load world
+    const worldView = new WorldView(bot.world, RECORDING_VIEW_DISTANCE, bot.entity.position);
+    viewer.listen(worldView);
+    worldView.init(bot.entity.position);
+
+    function syncCam() {
+        viewer.setFirstPersonCamera(bot.entity.position, bot.entity.yaw, bot.entity.pitch);
+        worldView.updatePosition(bot.entity.position);
+    }
+    syncCam();
+
+    // Render loop
+    const output = RECORDING_OUTPUT;
+    const ffmpeg = spawn('ffmpeg', [
+        '-y', // overwrite output
+        '-f', 'image2pipe', // auto-detected input format
+        '-r', '30', // input frame rate
+        '-i', '-', // read from stdin
+        '-vcodec', 'libx264', // output video encoder
+        '-pix_fmt', 'yuv420p', // pixel format
+        output // destination path
+    ], { stdio: ['pipe', 'inherit', 'inherit'] });
+
+    let frames = 0;
+    function update() {
+        renderer.render(viewer.scene, viewer.camera);
+
+        const imageStream = canvas.createJPEGStream({
+            bufsize: 4096,
+            quality: 100,
+            progressive: false
+        });
+
+        imageStream.on('data', chunk => {
+            if (ffmpeg.stdin.writable){
+                ffmpeg.stdin.write(chunk);
+            } else {
+                console.log("Error: ffmpeg stdin closed.");
+            }
+        });
+
+        imageStream.on('end', () => {
+            frames++;
+            if (RECORDING_FRAMES < 0 || frames < RECORDING_FRAMES) {
+                setTimeout(update, 16); // ~60 fps target
+            } else {
+                console.log('[record] done streaming');
+                ffmpeg.stdin.end();
+            }
+        });
+
+        ffmpeg.on('close', code => {
+            console.log(`[record] ffmpeg exited with code ${code}. Output: ${output}`);
+        });
+
+        bot.on('move', syncCam);
+        worldView.listenToBot(bot);
+    }
+}
 
 app.post("/start", (req, res) => {
     if (bot) onDisconnect("Restarting bot");
@@ -33,6 +136,9 @@ app.post("/start", (req, res) => {
         auth: 'microsoft',
         disableChatSigning: true,
         checkTimeoutInterval: 60 * 60 * 1000,
+        onMsaCode: (d) => {
+            console.log('[MSA] Go to', d.verification_uri, 'and enter code:', d.user_code)
+        }
     });
     bot.once("error", onConnectionFailed);
 
@@ -133,6 +239,33 @@ app.post("/start", (req, res) => {
         initCounter(bot);
         bot.chat("/gamerule keepInventory true");
         bot.chat("/gamerule doDaylightCycle false");
+
+        let viewerServer;
+        let inventoryServer;
+
+        // Viewer mode
+        if (process.env.VIEWER_MODE === 'browser') {
+            startBrowserViewer(bot).catch(err => console.error('[viewer]', err));
+        } else if (process.env.VIEWER_MODE === 'record') {
+            startRecording(bot).catch(err => console.error('[record]', err));
+        } else {
+            console.log(`[viewer] VIEWER_MODE='${VIEWER_MODE}' not recognized -- skipping viewer/recording.`);
+        }
+
+        function stopBrowserViewer() {
+            if (viewerServer?.close) {
+                try { viewerServer.close() } catch (_) {}
+                    viewerServer = undefined;
+                }
+                if (inventoryServer?.close) {
+                try { inventoryServer.close() } catch (_) {}
+                    inventoryServer = undefined;
+            }
+        }
+
+        bot.once('end', stopBrowserViewer);
+        bot.once('kicked', stopBrowserViewer);
+        bot.once('error', stopBrowserViewer);
     });
 
     function onConnectionFailed(e) {
@@ -141,8 +274,8 @@ app.post("/start", (req, res) => {
         res.status(400).json({ error: e });
     }
     function onDisconnect(message) {
-        if (bot.viewer) {
-            bot.viewer.close();
+        if (bot.mineflayerViewer) {
+            bot.mineflayerViewer.close();
         }
         bot.end();
         console.log(message);
@@ -400,6 +533,7 @@ app.post("/step", async (req, res) => {
 });
 
 app.post("/stop", (req, res) => {
+    stopBrowserViewer();
     bot.end();
     res.json({
         message: "Bot stopped",
