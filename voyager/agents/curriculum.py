@@ -15,6 +15,9 @@ from langchain.schema import HumanMessage, SystemMessage
 from langchain.vectorstores import Chroma
 
 from voyager.utils.watsonx import init_llm_client, init_embedding_client
+# new import for  KG-CODE
+from voyager.agents.knowledge_graph import KnowledgeGraphManager
+import os
 
 class CurriculumAgent:
     def __init__(
@@ -30,6 +33,28 @@ class CurriculumAgent:
         warm_up=None,
         core_inventory_items: str | None = None,
     ):
+        #KG_CODE
+        neo4j_uri = os.getenv("NEO4J_URI")
+        neo4j_user = os.getenv("NEO4J_USER", "neo4j")
+        neo4j_password = os.getenv("NEO4J_PASSWORD")
+
+        if neo4j_uri and neo4j_password:
+            try:
+                self.kg_manager = KnowledgeGraphManager(
+                    neo4j_uri=neo4j_uri,
+                    neo4j_user=neo4j_user,
+                    neo4j_password=neo4j_password,
+                    ckpt_dir=ckpt_dir
+                )
+                self.kg_manager.load_minecraft_seed_data()
+                print(f"\033[35m✓ Knowledge Graph enabled\033[0m")
+            except Exception as e:
+                print(f"\033[33m⚠ KG init failed: {e}\033[0m")
+                self.kg_manager = None
+        else:
+            print(f"\033[33m⚠ No Neo4j credentials\033[0m")
+            self.kg_manager = None
+        #KG-CODE END
         self.llm = init_llm_client()
         self.qa_llm = init_llm_client()
         assert mode in [
@@ -290,6 +315,18 @@ class CurriculumAgent:
     def propose_next_ai_task(self, *, messages, max_retries=5):
         if max_retries == 0:
             raise RuntimeError("Max retries reached, failed to propose ai task.")
+        # KG-CODE
+        if self.kg_manager:
+            try:
+                achievable_tasks = self.kg_manager.get_achievable_tasks(
+                    inventory={} # You'll pass actual inventory later
+                )
+                kg_context = f"\n\nAchievable tasks: {', '.join(achievable_tasks[:5])}"
+                messages[0].content += kg_context
+                print(f"\033[36m[KG] Added context\033[0m")
+            except Exception as e:
+                print(f"\033[33m⚠ KG query failed: {e}\033[0m")
+        # KG-CODE-END
         curriculum = self.llm(messages).content
         print(f"\033[31m****Curriculum Agent ai message****\n{curriculum}\033[0m")
         try:

@@ -20,7 +20,8 @@ dependencies = [
     "psutil",
     "minecraft_launcher_lib",
     "javascript",
-    "pysqlite3-binary"
+    "neo4j>=6.0.3",
+    "pysqlite3>=0.5.4",
 ]
 
 [build-system]
