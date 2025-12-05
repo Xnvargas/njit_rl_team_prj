@@ -105,5 +105,5 @@ Note: The `apikey` and `project_id` are pulled from your `.env` file and should 
 2. Configure your `.env` file with credentials
 3. Edit `main.py` to customize your prompt and input
 4. Optionally edit `utils/watsonx.py` to adjust model parameters
-5. Run the application: `uv run main.py`
+5. Run the application: `DEBUG="minecraft-protocol*,mineflayer*" uv run --no-cache ./scripts/run_voyager.py`
 6. View the model's response in the terminal
