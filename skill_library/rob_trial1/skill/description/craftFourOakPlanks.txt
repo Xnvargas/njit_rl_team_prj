@@ -1,0 +1,3 @@
+async function craftFourOakPlanks(bot) {
+    // The function ensures an oak log is present in the inventory, searching for and mining one if needed, then verifies there is at least one log (sufficient for four planks), crafts oak planks using the 2×2 crafting grid, and finally checks that the inventory now contains at least four oak planks.
+}

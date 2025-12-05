@@ -12,6 +12,9 @@ from .agents import CriticAgent
 from .agents import CurriculumAgent
 from .agents import SkillManager
 
+import traceback
+import csv
+
 # TODO: remove event memory
 class Voyager:
     def __init__(
@@ -46,6 +49,7 @@ class Voyager:
         ckpt_dir: str = "ckpt",
         skill_library_dir: str = None,
         resume: bool = False,
+        discovery_csv_path: str = "./logs/item_discovery.csv",
     ):
         """
         The main class for Voyager.
@@ -107,6 +111,11 @@ class Voyager:
         self.env_wait_ticks = env_wait_ticks
         self.reset_placed_if_failed = reset_placed_if_failed
         self.max_iterations = max_iterations
+
+        # init discovery tracking
+        self.discovery_csv_path = discovery_csv_path
+        self.discovered_items = set()
+        self.global_iteration = 0
 
         # init agents
         self.action_agent = ActionAgent(
@@ -194,6 +203,40 @@ class Voyager:
     def close(self):
         self.env.close()
 
+    def track_item_discoveries(self, events):
+        """Detect newly discovered items and log (task, item, iteration) to CSV."""
+        if not events:
+            return
+
+        # Last observation from env.step
+        obs = events[-1][1]
+        inventory = obs.get("inventory", {}) or {}
+
+        # Prompting iterations (1-based)
+        iteration = self.global_iteration
+
+        newly_found = []
+        for item_name, qty in inventory.items():
+            if qty and item_name not in self.discovered_items:
+                self.discovered_items.add(item_name)
+                newly_found.append(item_name)
+
+        if not newly_found or not self.discovery_csv_path:
+            return
+
+        file_exists = os.path.exists(self.discovery_csv_path)
+        with open(self.discovery_csv_path, "a", newline="") as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(["task", "item", "iteration"])
+            for item_name in newly_found:
+                writer.writerow([self.task, item_name, iteration])
+
+        if len(newly_found) == 1:
+            print(f"[DISCOVERY] Discovered new item '{newly_found[0]}' in {iteration} iterations")
+        else:
+            print(f"[DISCOVERY] Discovered new items {newly_found} in {iteration} iterations")
+
     def step(self):
         if self.action_agent_rollout_num_iter < 0:
             raise ValueError("Agent must be reset before stepping")
@@ -211,6 +254,11 @@ class Voyager:
                 programs=self.skill_manager.programs,
             )
             self.recorder.record(events, self.task)
+
+            # Track newly discovered items for this step
+            self.global_iteration += 1
+            self.track_item_discoveries(events)
+
             self.action_agent.update_chest_memory(events[-1][1]["nearbyChests"])
             success, critique = self.critic_agent.check_task_success(
                 events=events,
@@ -343,6 +391,7 @@ class Voyager:
                 # use red color background to print the error
                 print("Your last round rollout terminated due to error:")
                 print(f"\033[41m{e}\033[0m")
+                traceback.print_exc()
 
             if info["success"]:
                 self.skill_manager.add_new_skill(info)

@@ -1,0 +1,3 @@
+async function mineThreeGoldOre(bot) {
+    // The function equips a diamond or iron pickaxe, searches for gold ore within a 32‑block radius and, if none is found, explores in a random horizontal direction until gold ore is located, then mines three gold ore blocks and finally counts the gold nuggets now present in the inventory.
+}

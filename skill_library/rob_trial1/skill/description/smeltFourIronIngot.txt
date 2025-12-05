@@ -1,0 +1,3 @@
+async function smeltFourIronIngot(bot) {
+    // The routine ensures the bot has at least four raw iron, one coal, and a furnace item, then searches for a nearby furnace; if none is found it looks for a suitable empty block adjacent to solid ground and places a furnace there, optionally exploring further to locate a spot, and finally initiates smelting of four raw iron using the coal as fuel, resulting in iron ingots in the inventory.
+}

@@ -1,0 +1,3 @@
+async function killOnePig(bot) {
+    // Selects the best available pickaxe (iron, stone, or wooden) from the inventory and equips it as a weapon, then searches for a pig within 32 blocks; if none is found, it explores in a random horizontal direction for up to 60 seconds until a pig appears, aborting if still absent, and finally attacks the pig until it is killed.
+}

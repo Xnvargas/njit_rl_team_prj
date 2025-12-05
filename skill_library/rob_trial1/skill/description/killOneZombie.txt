@@ -1,0 +1,3 @@
+async function killOneZombie(bot) {
+    // The routine equips the best available pickaxe as a weapon, explores in a random horizontal direction to locate a zombie within a short range, verifies the zombie’s position, and then engages and defeats it using a combat helper.
+}

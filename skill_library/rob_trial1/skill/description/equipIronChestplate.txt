@@ -1,0 +1,3 @@
+async function equipIronChestplate(bot) {
+    // The routine first checks the inventory for an iron chestplate and equips it if present; if not, it attempts to retrieve one from a specified chest location; should the chestplate still be missing, it ensures sufficient iron ingots by smelting raw iron using a furnace, creating the furnace if necessary; it also guarantees a crafting table is available before crafting the iron chestplate; finally, it equips the newly crafted chestplate; it aborts if essential blocks cannot be placed.
+}

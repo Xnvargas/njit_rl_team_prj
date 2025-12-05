@@ -1,0 +1,3 @@
+async function craftOneClock(bot) {
+    // The function verifies that the bot has at least four gold ingots and one redstone dust, then searches for a nearby crafting table; if none is found it attempts up to three times to locate a suitable empty spot with solid ground, moves there, clears any obstructing block, and places a crafting table. After ensuring a crafting table is present, it moves within range of the table and crafts exactly one clock.
+}

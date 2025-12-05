@@ -1,0 +1,3 @@
+async function equipIronPickaxe(bot) {
+    // The function searches the bot’s inventory for an iron pickaxe and exits if none is found; otherwise it attempts to equip the iron pickaxe in the hand and catches any errors that occur during the equip operation.
+}

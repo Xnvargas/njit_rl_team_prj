@@ -1,0 +1,3 @@
+async function craftFurnace(bot) {
+    // The routine first checks the inventory for at least eight cobblestones and mines additional stone blocks if the count is insufficient; it then searches for a nearby crafting table and, if none is found, attempts to place one on a suitable solid block with air above, moving around if necessary to locate a spot; finally, with a crafting table available, it crafts a furnace while handling any potential errors.
+}

@@ -1,0 +1,3 @@
+async function craftOneIronBoots(bot) {
+    // The routine ensures the bot has at least four iron ingots, smelting raw iron with available fuel if needed, then locates or places a crafting table on a suitable nearby air block, crafts one set of iron boots using the ingots, and finally checks the inventory to confirm the boots were successfully created.
+}

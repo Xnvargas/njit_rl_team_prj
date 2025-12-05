@@ -1,0 +1,56 @@
+task,item,iteration
+Mine 1 wood log,oak_log,1
+Craft 4 oak planks,oak_planks,2
+Craft 2 sticks,dirt,3
+Craft 2 sticks,crafting_table,4
+Craft 2 sticks,stick,5
+Obtain 1 acacia log,acacia_log,6
+Craft 1 wooden pickaxe,wooden_pickaxe,7
+Mine 3 cobblestone,cobblestone,8
+Mine 3 stone blocks,stone_pickaxe,9
+Mine 3 coal ore,coal,10
+Mine 1 iron ore,raw_iron,11
+Mine 1 iron ore,diorite,11
+Craft a furnace,furnace,15
+Smelt 4 iron ingots,iron_ingot,17
+Mine 5 copper ore,iron_pickaxe,19
+Mine 5 copper ore,raw_copper,19
+Equip iron pickaxe,copper_ingot,21
+Craft 1 copper block,copper_block,22
+Kill 1 zombie,rotten_flesh,23
+Cook 3 rotten flesh,acacia_planks,24
+Kill 1 pig,porkchop,28
+Cook 1 porkchop,cooked_porkchop,30
+Craft 1 iron sword,iron_sword,61
+Kill 1 pig,gravel,64
+Kill 1 pig,azure_bluet,64
+Kill 1 pig,pointed_dripstone,64
+Craft 1 lightning rod,lightning_rod,65
+Collect 5 sugar cane,sugar_cane,66
+Craft 1 shield,shield,70
+Kill 1 spider,dripstone_block,77
+Kill 1 spider,cobbled_deepslate,77
+Kill 1 spider,tuff,77
+Kill 1 spider,dandelion,77
+Cook 3 porkchop,string,79
+Cook 3 porkchop,chest,80
+Mine 5 iron ore,granite,82
+Mine 5 iron ore,andesite,82
+Craft 1 iron chestplate,iron_chestplate,92
+Craft 1 iron helmet,iron_helmet,94
+Craft iron leggings,iron_leggings,96
+Craft 1 iron boots,iron_boots,105
+Mine 5 redstone ore,redstone,109
+Mine 3 diamond ore,diamond,110
+Craft 1 diamond pickaxe,diamond_pickaxe,112
+Craft 1 compass,compass,113
+Mine 3 gold ore,raw_gold,118
+Craft a bucket,bucket,122
+Smelt 4 raw gold,gold_ingot,125
+Cook 2 raw porkchops,egg,133
+Kill 1 spider,spider_eye,136
+Cook 2 porkchop,bread,140
+Eat bread,lapis_lazuli,142
+Craft 1 fishing rod,fishing_rod,152
+Mine 4 obsidian blocks,water_bucket,153
+Craft 1 clock,clock,163

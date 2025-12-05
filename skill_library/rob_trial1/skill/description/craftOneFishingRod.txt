@@ -1,0 +1,3 @@
+async function craftOneFishingRod(bot) {
+    // The routine ensures the bot has at least three sticks and two strings, obtaining any missing items from the nearest chest within 32 blocks. It then checks for a crafting table within five blocks and, if none is found, attempts to place one on a suitable solid surface nearby. After securing a crafting table, the bot moves close to it and crafts a single fishing rod using the gathered materials. The process handles placement retries and aborts if required resources or a table cannot be secured.
+}

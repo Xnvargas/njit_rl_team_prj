@@ -1,0 +1,3 @@
+async function cookThreePorkchops(bot) {
+    // The routine first ensures a furnace is available and that the bot has at least one fuel item, then gathers enough raw porkchops to reach a target of three. It checks how many cooked porkchops are already in the inventory, calculates the shortfall, and smelts the required number one by one, crafting additional fuel if necessary. Finally it verifies that the inventory now contains at least three cooked porkchops.
+}

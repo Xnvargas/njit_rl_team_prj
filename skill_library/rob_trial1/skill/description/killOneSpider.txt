@@ -1,0 +1,3 @@
+async function killOneSpider(bot) {
+    // The routine first checks the inventory for any sword (iron, diamond, stone, or wooden) and equips it in the hand; it then performs up to ten searches, moving in random horizontal directions until a spider is detected within 32 blocks; once a spider is found, the bot engages the target using pathfinding and combat logic with a timeout of about 15 seconds; the process ends after successfully killing one spider or after failing to locate any spider after the attempts.
+}

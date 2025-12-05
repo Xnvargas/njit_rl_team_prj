@@ -1,0 +1,3 @@
+async function craftOneIronChestplate(bot) {
+    // The function ensures the bot has at least five iron ingots, smelting raw iron with available fuel if needed, then guarantees four wooden planks by mining a log and converting it when necessary, checks for a crafting table and crafts one from planks if missing, places a crafting table nearby if none is present, and finally crafts an iron chestplate and verifies its successful creation.
+}

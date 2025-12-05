@@ -1,0 +1,3 @@
+async function smeltEightRawIron(bot) {
+    // The function ensures a furnace is present (placing one if missing), verifies the inventory contains at least eight raw iron, gathers enough coal by mining and, if necessary, exploring for more ore, smelts eight raw iron into iron ingots using the furnace, and finally confirms that at least eight iron ingots were produced.
+}

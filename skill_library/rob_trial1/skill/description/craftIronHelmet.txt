@@ -1,0 +1,3 @@
+async function craftIronHelmet(bot) {
+    // The function first verifies that a furnace is nearby and places one if absent, then smelts raw iron with coal until at least five iron ingots are in the inventory, ensures a crafting table is present or places it, checks again for sufficient ingots, and finally crafts an iron helmet, reporting whether the crafting succeeded.
+}

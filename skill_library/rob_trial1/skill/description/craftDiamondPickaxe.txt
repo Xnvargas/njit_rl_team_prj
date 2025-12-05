@@ -1,0 +1,3 @@
+async function craftDiamondPickaxe(bot) {
+    // The function first checks that the inventory contains at least three diamonds and two sticks, aborting if the requirement is not met. It then searches for a nearby crafting table within a 32‑block radius; if none is found, it locates a suitable air block adjacent to a solid block and places a crafting table there. After confirming a crafting table is available, it initiates the crafting recipe for one diamond pickaxe. Once the crafting operation completes, it looks for the newly created diamond pickaxe in the inventory to confirm success. If the pickaxe is absent, the process is considered failed.
+}

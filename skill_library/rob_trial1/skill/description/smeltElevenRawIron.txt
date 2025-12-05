@@ -1,0 +1,3 @@
+async function smeltElevenRawIron(bot) {
+    // The routine first checks for a nearby furnace and places one if none is found. It then guarantees that at least eleven fuel items are available, crafting sticks from logs or planks when necessary. After securing fuel, it repeatedly smelts raw iron one piece at a time until eleven ingots are produced or resources run out. Fuel selection prefers any available fuel type among coal, sticks, or oak logs. The loop stops if raw iron or fuel is exhausted. Finally, it verifies the number of iron ingots obtained and reports whether the target of eleven was reached.
+}

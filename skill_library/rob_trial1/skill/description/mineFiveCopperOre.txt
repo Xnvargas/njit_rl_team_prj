@@ -1,0 +1,3 @@
+async function mineFiveCopperOre(bot) {
+    // The routine first guarantees a nearby crafting table and furnace, then checks for an iron pickaxe and crafts one if necessary before equipping it; it makes sure coal fuel occupies a slot in the allowed range; it searches for five copper ore blocks within 32 blocks, exploring in a random direction until enough are found; it mines exactly five copper ore blocks, smelts all obtained raw copper using the coal fuel, and finally confirms that at least five copper ingots are present.
+}

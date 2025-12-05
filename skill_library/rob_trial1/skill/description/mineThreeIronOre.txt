@@ -1,0 +1,3 @@
+async function mineThreeIronOre(bot) {
+    // The function equips a stone‑or‑better pickaxe, searches for an iron ore block within 32 blocks (exploring randomly for up to 60 seconds if none is initially found), mines three iron ore blocks, and then verifies that the inventory contains at least three iron ore items.
+}

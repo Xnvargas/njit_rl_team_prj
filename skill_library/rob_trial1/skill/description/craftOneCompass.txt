@@ -1,0 +1,3 @@
+async function craftOneCompass(bot) {
+    // The function guarantees the bot possesses four iron ingots, smelting raw iron with available fuel when needed; it then verifies there is at least one redstone dust; it ensures a crafting table is nearby, locating one or placing it in a suitable air block adjacent to a solid block; after meeting these prerequisites it crafts a compass; finally it checks the inventory to confirm the compass was successfully created.
+}

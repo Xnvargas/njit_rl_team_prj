@@ -1,0 +1,3 @@
+async function craftIronLeggings(bot) {
+    // The routine checks the inventory for at least seven iron ingots, smelts any missing raw iron using available fuel and a nearby furnace, ensures a crafting table is within reach (placing one if necessary), then crafts an iron leggings item, and finally verifies that the leggings were successfully created.
+}
