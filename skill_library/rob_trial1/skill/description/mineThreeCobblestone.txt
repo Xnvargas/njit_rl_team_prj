@@ -1,0 +1,3 @@
+async function mineThreeCobblestone(bot) {
+    // The routine first checks for a wooden pickaxe and crafts one using planks and sticks, gathering logs if necessary; it then equips the pickaxe, searches the surroundings for a stone block, and explores randomly until stone is found; once stone is located, it mines three blocks to produce cobblestone; finally, it verifies that at least three cobblestone items are present in the inventory.
+}

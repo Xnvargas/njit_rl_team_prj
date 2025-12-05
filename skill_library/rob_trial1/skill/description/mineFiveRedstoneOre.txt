@@ -1,0 +1,3 @@
+async function mineFiveRedstoneOre(bot) {
+    // The routine first ensures the bot is fed and holds an iron‑tier or better pickaxe, then it descends to a depth of Y ≤ 16 while searching for redstone ore, mines at least five ore blocks once found, and finally checks that the inventory contains five or more redstone dust items.
+}

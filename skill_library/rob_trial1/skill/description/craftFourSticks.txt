@@ -1,0 +1,3 @@
+async function craftFourSticks(bot) {
+    // The function first makes sure a crafting table block is present near the bot, placing one if it has the item; it then checks that the inventory contains at least two wooden planks, converting a log into planks when needed; after confirming sufficient planks, it crafts four sticks using the crafting table; finally, it verifies that the inventory now holds at least four sticks.
+}

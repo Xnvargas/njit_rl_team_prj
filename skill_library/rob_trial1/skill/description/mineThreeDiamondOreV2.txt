@@ -1,0 +1,3 @@
+async function mineThreeDiamondOre(bot) {
+    // The routine first ensures the bot is sufficiently fed, then selects and equips the strongest available pickaxe; it searches the surrounding area for diamond ore, exploring in random directions if necessary; upon locating ore it mines three diamond ore blocks; finally it counts the diamonds in the inventory to verify that at least three were obtained.
+}

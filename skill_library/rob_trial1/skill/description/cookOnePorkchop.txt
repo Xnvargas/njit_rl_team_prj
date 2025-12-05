@@ -1,0 +1,3 @@
+async function cookOnePorkchop(bot) {
+    // The routine first verifies that the inventory holds at least one raw porkchop and a suitable fuel (oak planks or sticks), aborting if either is missing. It then looks for a furnace within 32 blocks; if none is found it attempts to place a furnace item on a solid block beneath an air space, trying up to five random horizontal positions. Once a furnace is available, it smelts a single porkchop using the chosen fuel. After smelting, it checks the inventory to ensure a cooked porkchop was produced.
+}

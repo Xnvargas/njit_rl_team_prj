@@ -1,0 +1,3 @@
+async function eatOneCookedPorkchop(bot) {
+    // The routine ensures a cooked porkchop is present by first looking in the bot’s inventory and, if absent, locating a nearby chest and withdrawing one; it then equips the porkchop in the hand and attempts to consume it, updating the bot’s hunger level, while catching and handling any errors that occur during equipping or eating.
+}

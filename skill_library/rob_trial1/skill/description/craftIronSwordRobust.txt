@@ -1,0 +1,3 @@
+async function craftIronSwordRobust(bot) {
+    // The routine first eliminates nearby hostile mobs, then guarantees at least two iron ingots by smelting raw iron (using a furnace and coal) or mining iron ore and smelting it; it ensures a furnace and a crafting table are placed nearby, checks for a stick, and finally crafts an iron sword, verifying afterward that the sword was successfully created.
+}

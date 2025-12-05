@@ -1,0 +1,3 @@
+async function equipIronHelmet(bot) {
+    // The function loads the appropriate Minecraft data for the bot’s version, searches the inventory for an iron helmet, aborts if the helmet is not present, and if found equips it to the head slot.
+}

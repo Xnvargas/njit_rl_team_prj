@@ -1,0 +1,3 @@
+async function smeltFourRawIron(bot) {
+    // The routine first verifies that the inventory contains at least four raw iron, then searches for a nearby furnace and places one in a free adjacent air block if none is found. It ensures there is at least one unit of fuel by using existing coal or crafting sticks from planks when necessary. With the furnace and fuel ready, it smelts exactly four raw iron items. After smelting, it checks the inventory to confirm that at least four iron ingots were produced.
+}

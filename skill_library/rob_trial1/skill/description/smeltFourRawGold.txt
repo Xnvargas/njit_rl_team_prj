@@ -1,0 +1,3 @@
+async function smeltFourRawGold(bot) {
+    // The routine verifies that at least four raw gold and an equal amount of coal are present, locates or places a furnace nearby, and then uses the furnace to smelt the raw gold into gold ingots.
+}

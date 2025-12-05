@@ -1,0 +1,3 @@
+async function mineOneIronOre(bot) {
+    // The routine first checks if raw iron is already in the inventory and aborts if so, then searches the bot’s inventory for a stone‑level or better pickaxe and equips it; it looks for an iron ore block within a 32‑block radius, and if none is found it explores in a random direction until one appears, after which it mines exactly one iron ore block and finally confirms that raw iron has been added to the inventory.
+}

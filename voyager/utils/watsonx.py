@@ -17,6 +17,8 @@ def init_llm_client():
         parameters = TextChatParameters(
             temperature=0.5,
             top_p=1,
+            max_completion_tokens=5000,
+            #max_tokens
         )
         watsonx_llm = ChatWatsonx(
             model_id="openai/gpt-oss-120b",
@@ -43,7 +45,7 @@ def init_embedding_client():
             EmbedTextParamsMetaNames.RETURN_OPTIONS: {"input_text": True},
         }
         watsonx_embedder = WatsonxEmbeddings(
-            model_id="ibm/granite-embedding-107m-multilingual",
+            model_id="ibm/granite-embedding-278m-multilingual",
             url="https://us-south.ml.cloud.ibm.com",
             apikey=watsonx_key,
             project_id=watsonx_project,

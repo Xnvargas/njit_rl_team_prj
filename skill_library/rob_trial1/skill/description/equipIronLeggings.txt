@@ -1,0 +1,3 @@
+async function equipIronLeggings(bot) {
+    // The function checks the inventory for iron leggings, smelts raw iron into ingots when fewer than four are available, places a crafting table nearby if none is found, crafts the iron leggings, and finally equips them in the bot’s leg armor slot.
+}
