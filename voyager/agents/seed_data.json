@@ -1,0 +1,90 @@
+{
+  "items": [
+    {
+      "name": "fishing_rod",
+      "type": "tool",
+      "stackable": false
+    },
+    {
+      "name": "string",
+      "type": "material",
+      "stackable": true
+    },
+    {
+      "name": "stick",
+      "type": "material",
+      "stackable": true
+    },
+    {
+      "name": "spider",
+      "type": "mob",
+      "stackable": false
+    },
+    {
+      "name": "wooden_sword",
+      "type": "tool",
+      "stackable": false
+    },
+    {
+      "name": "crafting_table",
+      "type": "station",
+      "stackable": true
+    },
+    {
+      "name": "wood_log",
+      "type": "material",
+      "stackable": true
+    },
+    {
+      "name": "planks",
+      "type": "material",
+      "stackable": true
+    }
+  ],
+  "recipes": [
+    {
+      "result": "fishing_rod",
+      "ingredient": "string",
+      "quantity": 2
+    },
+    {
+      "result": "fishing_rod",
+      "ingredient": "stick",
+      "quantity": 3
+    },
+    {
+      "result": "planks",
+      "ingredient": "wood_log",
+      "quantity": 1
+    },
+    {
+      "result": "stick",
+      "ingredient": "planks",
+      "quantity": 2
+    },
+    {
+      "result": "crafting_table",
+      "ingredient": "planks",
+      "quantity": 4
+    },
+    {
+      "result": "wooden_sword",
+      "ingredient": "stick",
+      "quantity": 1
+    },
+    {
+      "result": "wooden_sword",
+      "ingredient": "planks",
+      "quantity": 2
+    }
+  ],
+  "mob_drops": [
+    {
+      "mob": "spider",
+      "drops": "string",
+      "min_quantity": 0,
+      "max_quantity": 2,
+      "probability": 0.33
+    }
+  ]
+}
