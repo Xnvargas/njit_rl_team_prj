@@ -327,11 +327,30 @@ class Voyager:
         return self.messages, 0, done, info
 
     def rollout(self, *, task, context, reset_env=True):
+        # KG-CODE: Capture inventory BEFORE task execution for learning
+        inventory_before = {}
+        if self.last_events:
+            inventory_before = copy.deepcopy(
+                self.last_events[-1][1].get("inventory", {}) or {}
+            )
+        
         self.reset(task=task, context=context, reset_env=reset_env)
         while True:
             messages, reward, done, info = self.step()
             if done:
                 break
+        
+        # KG-CODE: Capture inventory AFTER task execution for learning
+        inventory_after = {}
+        if self.last_events:
+            inventory_after = copy.deepcopy(
+                self.last_events[-1][1].get("inventory", {}) or {}
+            )
+        
+        # KG-CODE: Add inventory snapshots to info for learning
+        info["inventory_before"] = inventory_before
+        info["inventory_after"] = inventory_after
+        
         return messages, reward, done, info
 
     def learn(self, reset_env=True):
@@ -394,7 +413,9 @@ class Voyager:
                 traceback.print_exc()
 
             if info["success"]:
-                self.skill_manager.add_new_skill(info)
+                # KG-CODE: Pass kg_manager to skill_manager for recording skills
+                kg_manager = getattr(self.curriculum_agent, 'kg_manager', None)
+                self.skill_manager.add_new_skill(info, kg_manager=kg_manager)
 
             self.curriculum_agent.update_exploration_progress(info)
             print(

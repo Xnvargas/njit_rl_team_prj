@@ -369,6 +369,22 @@ class CurriculumAgent:
         if info["success"]:
             print(f"\033[35mCompleted task {task}.\033[0m")
             self.completed_tasks.append(task)
+            
+            # KG-CODE: Record task outcome for learning from observations
+            if self.kg_manager:
+                try:
+                    inventory_before = info.get("inventory_before", {})
+                    inventory_after = info.get("inventory_after", {})
+                    
+                    self.kg_manager.record_task_outcome(
+                        task=task,
+                        success=True,
+                        inventory_before=inventory_before,
+                        inventory_after=inventory_after
+                    )
+                    print(f"\033[36m[KG] Recorded learning from task: {task}\033[0m")
+                except Exception as e:
+                    print(f"\033[33m⚠ KG learning failed: {e}\033[0m")
         else:
             print(
                 f"\033[35mFailed to complete task {task}. Skipping to next task.\033[0m"

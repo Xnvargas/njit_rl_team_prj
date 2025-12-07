@@ -181,24 +181,157 @@ class KnowledgeGraphManager:
     
     def record_task_outcome(self, task, success, inventory_before, inventory_after):
         """
-        Learn from task execution to build empirical knowledge
+        Learn from task execution to build empirical knowledge.
+        Records basic task → item relationships.
         """
         if not success:
             return  # Only learn from successful tasks for now
         
-        # Identify new items acquired
-        new_items = set(inventory_after.keys()) - set(inventory_before.keys())
+        # Use enhanced learning method
+        self.learn_from_task_execution(task, inventory_before, inventory_after)
+    
+    def learn_from_task_execution(self, task, inventory_before, inventory_after, events=None):
+        """
+        Enhanced learning that extracts multiple relationship types from task execution.
+        
+        Learns:
+        - Task → PRODUCES → Item (what items a task gives)
+        - Mob → DROPS → Item (what mobs drop)
+        - Block → YIELDS → Item (what blocks yield when mined)
+        - Item → CRAFTED_FROM → Item (crafting relationships)
+        
+        Args:
+            task: The task description (e.g., "kill spider", "mine coal")
+            inventory_before: Inventory dict before task execution
+            inventory_after: Inventory dict after task execution
+            events: Optional event list for additional context
+        """
+        if not inventory_after:
+            return
+        
+        inventory_before = inventory_before or {}
+        
+        # Identify gained items (new items or quantity increases)
+        gained_items = {}
+        for item, qty in inventory_after.items():
+            before_qty = inventory_before.get(item, 0)
+            if qty > before_qty:
+                gained_items[item] = qty - before_qty
+        
+        # Identify consumed items
+        consumed_items = {}
+        for item, qty in inventory_before.items():
+            after_qty = inventory_after.get(item, 0)
+            if qty > after_qty:
+                consumed_items[item] = qty - after_qty
+        
+        if not gained_items:
+            return  # Nothing new learned
+        
+        task_lower = task.lower()
         
         with self.driver.session() as session:
-            for item in new_items:
-                # Record that this task produces this item
+            for item, quantity in gained_items.items():
+                # Record general task → item relationship
                 session.run("""
                     MERGE (t:Task {name: $task})
                     MERGE (i:Item {name: $item})
                     MERGE (t)-[r:PRODUCES]->(i)
                     SET r.confidence = coalesce(r.confidence, 0) + 0.1,
+                        r.quantity_observed = coalesce(r.quantity_observed, 0) + $quantity,
+                        r.times_observed = coalesce(r.times_observed, 0) + 1,
                         r.last_observed = datetime()
-                """, task=task, item=item)
+                """, task=task, item=item, quantity=quantity)
+                
+                # Learn specific relationships based on task type
+                if "kill" in task_lower or "hunt" in task_lower:
+                    mob_name = self._extract_mob_from_task(task)
+                    if mob_name:
+                        session.run("""
+                            MERGE (m:Mob {name: $mob})
+                            MERGE (i:Item {name: $item})
+                            MERGE (m)-[r:DROPS]->(i)
+                            SET r.confidence = coalesce(r.confidence, 0) + 0.1,
+                                r.times_observed = coalesce(r.times_observed, 0) + 1,
+                                r.avg_quantity = coalesce(r.avg_quantity, 0) * 0.9 + $quantity * 0.1,
+                                r.last_observed = datetime()
+                        """, mob=mob_name, item=item, quantity=quantity)
+                        print(f"\033[36m[KG] Learned: {mob_name} DROPS {item}\033[0m")
+                
+                elif "mine" in task_lower or "dig" in task_lower:
+                    block_name = self._extract_block_from_task(task)
+                    if block_name:
+                        session.run("""
+                            MERGE (b:Block {name: $block})
+                            MERGE (i:Item {name: $item})
+                            MERGE (b)-[r:YIELDS]->(i)
+                            SET r.confidence = coalesce(r.confidence, 0) + 0.1,
+                                r.times_observed = coalesce(r.times_observed, 0) + 1,
+                                r.last_observed = datetime()
+                        """, block=block_name, item=item)
+                        print(f"\033[36m[KG] Learned: {block_name} YIELDS {item}\033[0m")
+                
+                elif "craft" in task_lower or "make" in task_lower:
+                    # Record what was consumed to craft this item
+                    for consumed, cons_qty in consumed_items.items():
+                        session.run("""
+                            MERGE (result:Item {name: $result})
+                            MERGE (ingredient:Item {name: $ingredient})
+                            MERGE (result)-[r:CRAFTED_FROM]->(ingredient)
+                            SET r.quantity = $quantity,
+                                r.confidence = coalesce(r.confidence, 0) + 0.1,
+                                r.times_observed = coalesce(r.times_observed, 0) + 1,
+                                r.last_observed = datetime()
+                        """, result=item, ingredient=consumed, quantity=cons_qty)
+                        print(f"\033[36m[KG] Learned: {item} CRAFTED_FROM {consumed} (qty: {cons_qty})\033[0m")
+                
+                elif "smelt" in task_lower or "cook" in task_lower:
+                    # Record smelting relationships
+                    for consumed, cons_qty in consumed_items.items():
+                        if consumed not in ['coal', 'charcoal']:  # Skip fuel
+                            session.run("""
+                                MERGE (result:Item {name: $result})
+                                MERGE (input:Item {name: $input})
+                                MERGE (result)-[r:SMELTED_FROM]->(input)
+                                SET r.confidence = coalesce(r.confidence, 0) + 0.1,
+                                    r.times_observed = coalesce(r.times_observed, 0) + 1,
+                                    r.last_observed = datetime()
+                            """, result=item, input=consumed)
+                            print(f"\033[36m[KG] Learned: {item} SMELTED_FROM {consumed}\033[0m")
+    
+    def _extract_mob_from_task(self, task):
+        """Extract mob name from task like 'kill one spider'"""
+        task_lower = task.lower()
+        # Common Minecraft mobs
+        mobs = [
+            'spider', 'zombie', 'skeleton', 'creeper', 'pig', 'cow', 'sheep', 
+            'chicken', 'enderman', 'slime', 'witch', 'blaze', 'ghast',
+            'piglin', 'hoglin', 'drowned', 'phantom', 'pillager', 'ravager',
+            'silverfish', 'cave_spider', 'bee', 'wolf', 'fox', 'rabbit',
+            'squid', 'dolphin', 'turtle', 'cod', 'salmon', 'pufferfish'
+        ]
+        for mob in mobs:
+            if mob.replace('_', ' ') in task_lower or mob in task_lower:
+                return mob
+        return None
+    
+    def _extract_block_from_task(self, task):
+        """Extract block name from task like 'mine 3 cobblestone'"""
+        task_lower = task.lower()
+        # Common Minecraft blocks/ores
+        blocks = [
+            'stone', 'cobblestone', 'wood', 'log', 'oak_log', 'birch_log', 
+            'spruce_log', 'jungle_log', 'acacia_log', 'dark_oak_log',
+            'dirt', 'grass', 'sand', 'gravel', 'clay',
+            'coal', 'coal_ore', 'iron_ore', 'gold_ore', 'diamond_ore',
+            'emerald_ore', 'lapis_ore', 'redstone_ore', 'copper_ore',
+            'deepslate', 'granite', 'diorite', 'andesite',
+            'obsidian', 'netherrack', 'end_stone'
+        ]
+        for block in blocks:
+            if block.replace('_', ' ') in task_lower or block in task_lower:
+                return block
+        return None
     
     def add_discovered_relationship(self, source, relationship, target, metadata=None):
         """
@@ -211,6 +344,94 @@ class KnowledgeGraphManager:
                 MERGE (s)-[r:{relationship}]->(t)
                 SET r += $metadata
             """, source=source, target=target, metadata=metadata or {})
+    
+    def record_skill(self, skill_name, description, task, inventory_before=None, inventory_after=None):
+        """
+        Record a learned skill and what it produces to the knowledge graph.
+        
+        Args:
+            skill_name: Name of the skill function (e.g., "craftWoodenPickaxe")
+            description: Auto-generated description of the skill
+            task: The task this skill was created for
+            inventory_before: Inventory before skill execution
+            inventory_after: Inventory after skill execution
+        """
+        inventory_before = inventory_before or {}
+        inventory_after = inventory_after or {}
+        
+        # Calculate items produced by this skill
+        produced_items = []
+        for item, qty in inventory_after.items():
+            before_qty = inventory_before.get(item, 0)
+            if qty > before_qty:
+                produced_items.append(item)
+        
+        with self.driver.session() as session:
+            # Create/update skill node
+            session.run("""
+                MERGE (s:Skill {name: $skill_name})
+                SET s.description = $description,
+                    s.source_task = $task,
+                    s.times_used = coalesce(s.times_used, 0) + 1,
+                    s.last_updated = datetime()
+            """, skill_name=skill_name, description=description, task=task)
+            
+            # Link skill to items it produces
+            for item in produced_items:
+                session.run("""
+                    MATCH (s:Skill {name: $skill_name})
+                    MERGE (i:Item {name: $item})
+                    MERGE (s)-[r:PRODUCES]->(i)
+                    SET r.confidence = 1.0,
+                        r.last_observed = datetime()
+                """, skill_name=skill_name, item=item)
+            
+            # Link skill to task
+            session.run("""
+                MATCH (s:Skill {name: $skill_name})
+                MERGE (t:Task {name: $task})
+                MERGE (s)-[r:ACCOMPLISHES]->(t)
+                SET r.last_used = datetime()
+            """, skill_name=skill_name, task=task)
+            
+            if produced_items:
+                print(f"\033[36m[KG] Recorded skill '{skill_name}' produces: {', '.join(produced_items)}\033[0m")
+            else:
+                print(f"\033[36m[KG] Recorded skill '{skill_name}' for task: {task}\033[0m")
+    
+    def get_skill_for_item(self, item_name):
+        """
+        Query for skills that can produce a specific item.
+        
+        Args:
+            item_name: The item to find skills for
+            
+        Returns:
+            List of skill names that produce this item
+        """
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (s:Skill)-[:PRODUCES]->(i:Item {name: $item_name})
+                RETURN s.name as skill_name, s.description as description
+            """, item_name=item_name)
+            
+            return [{"name": r["skill_name"], "description": r["description"]} for r in result]
+    
+    def get_learned_relationships_summary(self):
+        """
+        Get a summary of all learned relationships for debugging/analysis.
+        
+        Returns:
+            Dictionary with counts of different relationship types
+        """
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH ()-[r]->()
+                RETURN type(r) as relationship_type, count(r) as count
+                ORDER BY count DESC
+            """)
+            
+            return {r["relationship_type"]: r["count"] for r in result}
     
     # ==================== UTILITY METHODS ====================
     
