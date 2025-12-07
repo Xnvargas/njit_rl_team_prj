@@ -404,6 +404,8 @@ class Voyager:
                 f"\033[35mFailed tasks: {', '.join(self.curriculum_agent.failed_tasks)}\033[0m"
             )
 
+        U.plot_curve(self.discovery_csv_path)
+
         return {
             "completed_tasks": self.curriculum_agent.completed_tasks,
             "failed_tasks": self.curriculum_agent.failed_tasks,
