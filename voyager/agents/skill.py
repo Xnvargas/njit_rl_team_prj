@@ -61,7 +61,19 @@ class SkillManager:
             programs += f"{primitives}\n\n"
         return programs
 
-    def add_new_skill(self, info):
+    def add_new_skill(self, info, kg_manager=None):
+        """
+        Add a new skill to the skill library.
+        
+        Args:
+            info: Dictionary containing task info with keys:
+                - task: The task description
+                - program_name: Name of the skill function
+                - program_code: The skill code
+                - inventory_before: (optional) Inventory before task execution
+                - inventory_after: (optional) Inventory after task execution
+            kg_manager: (optional) KnowledgeGraphManager instance for recording skills
+        """
         if info["task"].startswith("Deposit useless items into the chest at"):
             # No need to reuse the deposit skill
             return
@@ -101,6 +113,19 @@ class SkillManager:
         )
         U.dump_json(self.skills, f"{self.ckpt_dir}/skill/skills.json")
         self.vectordb.persist()
+        
+        # KG-CODE: Record skill to knowledge graph for learning
+        if kg_manager:
+            try:
+                kg_manager.record_skill(
+                    skill_name=program_name,
+                    description=skill_description,
+                    task=info.get("task", ""),
+                    inventory_before=info.get("inventory_before", {}),
+                    inventory_after=info.get("inventory_after", {})
+                )
+            except Exception as e:
+                print(f"\033[33m⚠ KG skill recording failed: {e}\033[0m")
 
     def generate_skill_description(self, program_name, program_code):
         messages = [
