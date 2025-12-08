@@ -1,0 +1,49 @@
+task,item,iteration
+Mine 1 wood log,oak_log,1
+Craft 4 oak planks,oak_planks,2
+Craft a wooden pickaxe,stick,4
+Craft a wooden pickaxe,birch_log,4
+Craft a wooden pickaxe,crafting_table,6
+Craft a wooden pickaxe,wooden_pickaxe,7
+Mine 8 cobblestone,dirt,8
+Mine 8 cobblestone,cobblestone,8
+Craft stone pickaxe,stone_pickaxe,10
+Mine 3 copper ore,raw_copper,11
+Mine 3 copper ore,copper_ingot,11
+Mine 3 copper ore,furnace,11
+Mine 3 lapis lazuli,iron_pickaxe,14
+Mine 3 lapis lazuli,lapis_lazuli,14
+Mine 5 iron ore,raw_iron,15
+Smelt 5 raw iron,iron_ingot,20
+Smelt 5 raw iron,coal,22
+Craft 1 iron helmet,iron_helmet,24
+Mine 5 iron ore,gravel,29
+Mine 5 iron ore,andesite,29
+Mine 5 iron ore,granite,29
+Craft 1 iron sword,iron_sword,34
+Craft iron leggings,iron_leggings,35
+Craft 1 iron boots,iron_boots,39
+Craft 1 bucket,bucket,51
+Mine 5 redstone ore,diorite,52
+Mine 5 redstone ore,redstone,52
+Craft 1 compass,compass,53
+Equip iron chestplate,iron_chestplate,60
+Kill 1 spider,string,61
+Smelt 5 raw copper,oak_sapling,62
+Craft 1 lightning rod,lightning_rod,64
+Kill 5 spiders,sand,83
+Craft 1 bow,bow,84
+Craft 1 stone axe,stone_axe,90
+Smelt 5 iron ore,chest,91
+Take bread from chest,bread,98
+Craft 1 shield,shield,102
+Mine 5 gold ore,raw_gold,125
+Mine 5 gold ore,gold_ingot,126
+Craft a clock,clock,128
+Mine 10 gravel,iron_shovel,130
+Mine 10 gravel,flint,130
+Mine 3 diamond ore,cobbled_deepslate,132
+Mine 3 diamond ore,diamond,132
+Mine 1 diamond ore,tuff,137
+Kill 5 skeletons,arrow,150
+Kill 5 skeletons,bone,150

@@ -1,0 +1,3 @@
+async function craftIronChestplate(bot) {
+    // The routine first verifies that the inventory contains at least five iron ingots, then looks for a nearby crafting table and moves within one block of it, placing a new table on a suitable free spot above solid ground if none is found; after positioning at the table it crafts one iron chestplate and, if the item appears in the inventory, equips it on the torso.
+}

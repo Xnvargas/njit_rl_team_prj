@@ -1,0 +1,3 @@
+async function mineThreeCopperOre(bot) {
+    // The routine first verifies a stone pickaxe is present, then makes sure a furnace is available, searches for copper ore within a 32‑block radius (exploring randomly if needed), mines three copper ore blocks, gathers enough oak planks for smelting fuel, smelts the raw copper into ingots, and finally confirms that at least three copper ingots are now in the inventory.
+}

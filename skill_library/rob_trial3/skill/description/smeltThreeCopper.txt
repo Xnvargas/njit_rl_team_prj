@@ -1,0 +1,3 @@
+async function smeltThreeCopper(bot) {
+    // The routine checks that the bot has at least three raw copper, finds or places a furnace within a short distance, moves the bot next to the furnace, ensures two birch logs are stored in inventory slots beyond the hot‑bar to serve as fuel, smelts the three raw copper into copper ingots, and finally reports the total number of copper ingots now in the inventory.
+}

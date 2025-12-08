@@ -1,0 +1,3 @@
+async function craftClock(bot) {
+    // The routine first ensures the bot is equipped with a pickaxe of iron tier or better, then verifies that the inventory contains at least four gold ingots; it also checks for at least one redstone dust, acquiring more if needed, and confirms a crafting table is nearby, placing one if absent, before finally attempting to craft a clock using the gathered resources.
+}

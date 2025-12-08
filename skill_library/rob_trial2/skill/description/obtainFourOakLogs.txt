@@ -1,0 +1,3 @@
+async function obtainFourOakLogs(bot) {
+    // The routine searches the surroundings for oak log blocks, explores random directions when none are initially found, mines individual oak logs repeatedly until the inventory contains at least four, includes brief pauses to allow inventory updates, and finally verifies whether the target quantity was achieved, reporting success or the shortfall.
+}

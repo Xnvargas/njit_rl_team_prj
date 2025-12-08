@@ -1,0 +1,3 @@
+async function craftWoodenPickaxe(bot) {
+    // The routine first guarantees a usable crafting table is placed nearby, then ensures the bot has at least three oak planks and two sticks, crafting any missing planks, sticks, or the table itself as needed, after which it crafts a wooden pickaxe and finally verifies that the pickaxe appears in the inventory.
+}

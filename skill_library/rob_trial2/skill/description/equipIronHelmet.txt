@@ -1,0 +1,3 @@
+async function equipIronHelmet(bot) {
+    // The function verifies that iron helmet data exists, searches the bot’s inventory for an iron helmet, and if found, attempts to equip it to the head slot while gracefully handling any errors that occur.
+}

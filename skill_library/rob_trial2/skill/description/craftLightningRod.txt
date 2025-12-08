@@ -1,0 +1,3 @@
+async function craftLightningRod(bot) {
+    // The function ensures the bot has at least three copper ingots, smelting raw copper with coal when needed. It then searches for a nearby crafting table and places one on an adjacent air block if none is found. With a crafting table available, it crafts a lightning rod and verifies that the item now exists in the inventory.
+}

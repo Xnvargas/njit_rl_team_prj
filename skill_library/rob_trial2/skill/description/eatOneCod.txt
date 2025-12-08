@@ -1,0 +1,3 @@
+async function eatOneCod(bot) {
+    // It loads the Minecraft data for the bot’s version to locate the cod item ID, checks the inventory to ensure at least one cod is present, retrieves the cod stack, equips it to the hand, and then calls the consume method to eat it, handling any errors that may occur during consumption.
+}

@@ -1,0 +1,3 @@
+async function ensureIronHelmet(bot) {
+    // The routine first checks the inventory for an iron helmet and returns immediately if one is found; otherwise it gathers at least five iron ingots by mining ore and smelting, ensures a crafting table and furnace are placed nearby, crafts a single iron helmet, and finally verifies that the helmet now exists in the inventory.
+}

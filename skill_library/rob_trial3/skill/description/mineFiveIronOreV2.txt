@@ -1,0 +1,3 @@
+async function mineFiveIronOre(bot) {
+    // The routine equips the best available pickaxe from the inventory, then repeatedly searches for iron ore blocks within a short range, exploring randomly when none are nearby, moves close enough to each found ore, mines the necessary number of blocks, and continues this loop until at least five raw iron items are gathered, finally confirming the collected amount.
+}

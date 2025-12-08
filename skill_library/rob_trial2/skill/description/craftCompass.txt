@@ -1,0 +1,3 @@
+async function craftCompass(bot) {
+    // The routine checks that the inventory holds at least four iron ingots and one redstone dust, ensures a crafting table is present nearby (placing one in a free spot if needed), crafts a compass using that table, and then verifies that the compass appears in the inventory.
+}

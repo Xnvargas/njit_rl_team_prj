@@ -1,0 +1,3 @@
+async function smeltNineRawCopper(bot) {
+    // It first verifies the inventory contains at least nine raw copper and an equal amount of coal, then searches for a furnace nearby and places one on a suitable air block if none is found, proceeds to smelt the nine raw copper using the furnace, waits for the smelting process to finish, and finally confirms that the expected number of copper ingots were added to the inventory.
+}

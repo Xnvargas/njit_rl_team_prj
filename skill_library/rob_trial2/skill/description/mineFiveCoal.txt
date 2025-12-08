@@ -1,0 +1,3 @@
+async function mineFiveCoal(bot) {
+    // The function ensures the bot acquires at least five coal by first checking its current coal count, then confirming a stone‑or‑better pickaxe is available and equipping it, after which it repeatedly searches for nearby coal ore; if none is found it explores in random directions until ore is located, mines the required number of coal ore blocks while respecting a safety attempt limit, updates the coal count after each mining attempt, and finally reports whether the target amount of coal was successfully collected.
+}

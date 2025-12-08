@@ -1,0 +1,3 @@
+async function equipIronHelmet(bot) {
+    // The routine first checks whether an iron helmet is already worn; if not, it searches the inventory and equips it if present, otherwise it gathers at least five iron ingots, places a crafting table if none is nearby, crafts an iron helmet using that table, then locates the newly crafted helmet in the inventory and equips it on the head, handling missing resources as errors.
+}

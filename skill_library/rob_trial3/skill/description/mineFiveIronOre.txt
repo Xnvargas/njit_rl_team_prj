@@ -1,0 +1,3 @@
+async function mineFiveIronOre(bot) {
+    // The routine first checks how many raw iron items are already in the inventory and exits if five or more are present, then guarantees a stone‑or‑better pickaxe is available (crafting one if needed); it repeatedly searches for iron ore blocks nearby, exploring in random directions when none are found, and mines up to the remaining needed amount, updating the count after each batch, continuing until at least five raw iron pieces are collected, and finally reports whether the target was achieved.
+}

@@ -1,0 +1,3 @@
+async function mineOneDiamondOreSafe(bot) {
+    // The routine safely obtains a single diamond by first equipping an iron‑or‑better pickaxe, ensuring sufficient food and health, and eliminating any nearby creeper threat; it then searches for a deepslate diamond ore within a limited range, navigates to the block, mines exactly one ore, and finally verifies that a diamond was added to the inventory.
+}

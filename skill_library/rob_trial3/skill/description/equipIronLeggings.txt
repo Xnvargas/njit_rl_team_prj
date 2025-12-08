@@ -1,0 +1,3 @@
+async function equipIronLeggings(bot) {
+    // The routine first checks whether iron leggings are already worn, and if not it verifies the inventory contains the item; if missing, it gathers enough iron ingots by smelting raw iron with coal, places a crafting table if none is nearby, crafts the leggings, and finally equips them on the legs slot, reporting any failures along the way.
+}

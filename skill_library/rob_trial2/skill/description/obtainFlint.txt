@@ -1,0 +1,3 @@
+async function obtainFlint(bot) {
+    // The function ensures the bot acquires at least one flint by first checking the inventory, then repeatedly locating a gravel block within a set distance, exploring in random horizontal directions when none are found, optionally equipping a shovel to speed up mining, mining the gravel and waiting briefly for drops, and rechecking the flint count until the requirement is satisfied.
+}

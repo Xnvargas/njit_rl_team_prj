@@ -1,0 +1,3 @@
+async function mineFiveCoal(bot) {
+    // The routine first equips the best available pickaxe, then checks if the inventory already contains five coal items; if not, it repeatedly searches for coal ore within a 32‑block radius, exploring in random directions when none is found, mines the needed number of ore blocks, and repeats until at least five coal are collected, finally reporting whether the goal was achieved.
+}

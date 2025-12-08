@@ -1,0 +1,3 @@
+async function mineEightCobblestone(bot) {
+    // The function ensures the bot acquires at least eight cobblestone by checking the current cobblestone count, confirming a pickaxe is available, locating stone blocks nearby (or exploring in random directions until stone is found), mining the needed amount in batches while updating the inventory count, and finally confirming the target quantity has been collected.
+}

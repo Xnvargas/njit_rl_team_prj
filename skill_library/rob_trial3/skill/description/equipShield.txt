@@ -1,0 +1,3 @@
+async function equipShield(bot) {
+    // The function searches the bot’s inventory for a shield item and aborts if none is found; if a shield is present, it attempts to equip it into the off‑hand slot and catches any errors that occur during the equip operation.
+}

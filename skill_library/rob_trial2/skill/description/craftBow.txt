@@ -1,0 +1,3 @@
+async function craftBow(bot) {
+    // The function first verifies the inventory contains at least three sticks and three strings, aborting if any are missing. It then searches for a nearby crafting table and, if none is found, attempts to place one by locating a solid block and trying several adjacent positions, moving around if necessary. After a crafting table is confirmed, it crafts a bow using the required materials. Finally, it checks the inventory to confirm that a bow was created.
+}

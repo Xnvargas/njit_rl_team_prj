@@ -1,0 +1,56 @@
+task,item,iteration
+Mine 1 wood log,oak_log,1
+Obtain 4 oak logs,apple,2
+Craft 4 sticks,oak_planks,3
+Craft 4 sticks,stick,3
+Craft 1 wooden pickaxe,crafting_table,7
+Craft 1 wooden pickaxe,wooden_pickaxe,8
+Craft 1 wooden pickaxe,dirt,8
+Mine 3 cobblestone,cobblestone,10
+Craft 1 stone pickaxe,stone_pickaxe,12
+Mine 5 coal ore,coal,14
+Mine 5 copper ore,furnace,16
+Mine 5 iron ore,raw_iron,17
+Mine 5 iron ore,andesite,17
+Smelt 10 raw iron,iron_ingot,18
+Craft iron pickaxe,iron_pickaxe,21
+Mine 5 gold ore,granite,24
+Mine 5 gold ore,cobbled_deepslate,24
+Mine 5 gold ore,diorite,24
+Mine 5 gold ore,raw_gold,24
+Smelt 26 raw gold,gold_ingot,25
+Smelt 26 raw gold,egg,27
+Mine 3 coal ore,sandstone,29
+Mine 3 coal ore,sand,29
+Craft 1 bucket,bucket,31
+Craft golden apple,golden_apple,32
+Obtain 3 sugar_cane,sugar_cane,33
+Craft 1 iron helmet,iron_helmet,36
+Kill 1 spider,string,43
+Craft 1 iron sword,iron_sword,48
+Kill 2 spiders,spider_eye,51
+Craft fishing rod,fishing_rod,54
+Mine 5 copper ore,raw_copper,69
+Craft 1 iron chestplate,iron_chestplate,74
+Smelt 20 raw iron,smooth_sandstone,75
+Smelt 20 raw iron,sandstone_slab,77
+Smelt 10 raw copper,copper_ingot,79
+Craft 1 lightning_rod,lightning_rod,80
+Craft iron leggings,iron_leggings,81
+Craft 1 iron boots,iron_boots,85
+Catch 5 fish,cod,91
+Craft 1 copper block,copper_block,106
+Mine 3 redstone ore,wheat_seeds,107
+Mine 3 redstone ore,gravel,125
+Craft 1 bow,bow,129
+Kill 3 chickens,feather,133
+Kill 3 chickens,chicken,133
+Craft 1 compass,redstone,138
+Craft 1 compass,chest,138
+Craft 1 compass,compass,139
+Gather 5 cocoa beans,cocoa_beans,142
+Obtain 1 flint,flint,145
+Kill 1 enderman,jungle_log,149
+Kill 1 enderman,arrow,149
+Craft 1 clock,clock,150
+Craft 4 arrows,jungle_planks,156

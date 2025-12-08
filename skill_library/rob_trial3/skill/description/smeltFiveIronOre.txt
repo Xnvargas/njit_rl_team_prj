@@ -1,0 +1,3 @@
+async function smeltFiveIronOre(bot) {
+    // The function gathers at least five raw iron (mining ore if needed), ensures a furnace is placed nearby, verifies that fuel (coal or sticks) is available, smelts the raw iron into iron ingots using the furnace, and finally reports the total number of iron ingots obtained.
+}

@@ -1,0 +1,3 @@
+async function equipIronChestplate(bot) {
+    // The routine first verifies whether an iron chestplate is already worn, then looks for one in the inventory to equip it; if missing, it gathers enough iron ingots by mining iron ore, smelting raw iron using a furnace and oak‑plank fuel, and crafting any needed planks; it also ensures a furnace and a crafting table are placed nearby, finding free placement spots when necessary; after securing eight iron ingots, it crafts an iron chestplate at the crafting table; finally, it equips the newly crafted chestplate on the torso slot.
+}

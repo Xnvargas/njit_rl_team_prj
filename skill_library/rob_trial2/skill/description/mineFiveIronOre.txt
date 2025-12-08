@@ -1,0 +1,3 @@
+async function mineFiveIronOre(bot) {
+    // The function checks whether the bot already has at least five iron ore items, equips a stone‑or‑better pickaxe, then repeatedly searches for iron ore blocks within a 32‑block radius, exploring in random directions if none are found, mines the required number of blocks, updates the inventory count, and repeats this loop up to a safety‑capped number of attempts before finally indicating whether the goal of five iron ore was achieved.
+}

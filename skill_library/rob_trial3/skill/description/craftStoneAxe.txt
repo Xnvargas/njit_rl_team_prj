@@ -1,0 +1,3 @@
+async function craftStoneAxe(bot) {
+    // The routine first checks if a stone axe is already in the inventory and, if not, ensures the bot has at least three cobblestones and two sticks (mining stone and logs and crafting planks and sticks as needed); it then locates or places a crafting table on a free air spot near a solid block, moves the bot next to it, crafts the stone axe, and finally verifies that the axe was successfully added to the inventory.
+}

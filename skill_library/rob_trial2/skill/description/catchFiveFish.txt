@@ -1,0 +1,3 @@
+async function catchFiveFish(bot) {
+    // The routine verifies a fishing rod is present, locates a water block within 32 blocks (searching randomly if needed), moves the bot next to the water, equips the rod, repeatedly casts and catches fish until the total of cod, salmon, tropical fish, and pufferfish reaches at least five, then concludes.
+}

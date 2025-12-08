@@ -1,0 +1,3 @@
+async function placeChestNearby(bot) {
+    // The routine first looks for an existing chest within five blocks and aborts if one is found, then confirms the bot holds a chest item, searches for a nearby solid block within three blocks, chooses an adjacent empty air space from a set of possible offsets, attempts to place the chest at that location, and finally checks that the chest was successfully placed.
+}

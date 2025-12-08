@@ -1,0 +1,3 @@
+async function mineThreeLapis(bot) {
+    // The function first ensures an iron pickaxe is available, crafting one if necessary by gathering iron ingots, sticks, and planks using a crafting table and furnace, then equips it; it searches the surrounding area for lapis lazuli ore, mines three ore blocks to guarantee at least three lapis, and finally checks the inventory count to confirm whether the required amount was obtained.
+}

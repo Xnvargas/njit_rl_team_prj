@@ -1,0 +1,3 @@
+async function craftOneBow(bot) {
+    // The routine first checks if a bow is already in the inventory and aborts if so. It then ensures the bot has at least three sticks and three strings, stopping if materials are missing. Next it searches for a nearby crafting table, and if none is found it locates a suitable empty block and places a crafting table there. After moving within one block of the table, it attempts to craft one bow using the available resources. Finally it confirms that the bow now exists in the inventory.
+}

@@ -1,0 +1,3 @@
+async function craftGoldenApple(bot) {
+    // The routine gathers the required materials (8 gold ingots and an apple), smelting raw gold or mining gold ore as needed to reach the gold count, ensures a crafting table is present by locating or placing one nearby, then crafts a golden apple using the table and verifies that the item was successfully created.
+}

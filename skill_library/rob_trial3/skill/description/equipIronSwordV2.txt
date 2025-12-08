@@ -1,0 +1,3 @@
+async function equipIronSword(bot) {
+    // The function searches the bot’s inventory for an iron sword and exits if none is found; if the sword is present, it attempts to equip it in the main hand and handles any errors that may occur during the equipping process.
+}

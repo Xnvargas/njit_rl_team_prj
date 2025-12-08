@@ -1,0 +1,3 @@
+async function killThreeChickensReliable(bot) {
+    // The routine equips any available pickaxe or sword, then repeatedly searches the surroundings in random horizontal directions for a chicken within 32 blocks, attempting up to eight explorations per target; for each of three iterations it locates a chicken, attacks it until it dies, and waits briefly to collect drops, aborting if a chicken cannot be found after the allotted attempts, and finishes after successfully eliminating three chickens.
+}

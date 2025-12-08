@@ -1,0 +1,3 @@
+async function craftOneBucket(bot) {
+    // The function ensures the bot has a bucket by first checking the inventory, then confirming it possesses at least three iron ingots; it searches for a nearby crafting table and, if none is found, places one on a suitable air block above solid ground; after positioning the bot adjacent to the crafting table, it attempts to craft a bucket using the available resources; finally, it verifies that the bucket now exists in the inventory.
+}

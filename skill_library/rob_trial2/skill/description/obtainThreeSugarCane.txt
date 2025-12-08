@@ -1,0 +1,3 @@
+async function obtainThreeSugarCane(bot) {
+    // The function repeatedly checks the bot’s inventory for sugar cane and, while fewer than three are present, searches for a sugar‑cane block within a 32‑block radius; if none is found it explores in a random horizontal direction for up to a minute until one appears, then harvests the needed amount, updates the inventory, and repeats this process until at least three sugar cane are collected.
+}

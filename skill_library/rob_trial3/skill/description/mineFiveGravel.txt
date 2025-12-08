@@ -1,0 +1,3 @@
+async function mineFiveGravel(bot) {
+    // The function ensures the bot collects at least five gravel by first checking the current inventory count, then attempting to equip any available pickaxe. It repeatedly searches for nearby gravel blocks, and if none are found it explores in random directions until gravel is located. Once gravel is found, it mines the required number of blocks and updates the inventory count, looping until the target amount is reached. Finally, it confirms the task is complete once five or more gravel items are in the inventory.
+}

@@ -1,0 +1,3 @@
+async function smeltTenRawCopper(bot) {
+    // The routine first verifies that at least ten raw copper are present and mines any shortfall, then checks for an equal amount of coal and mines more if necessary, locates a furnace within range or places one from the inventory on a nearby air block, uses the furnace to smelt the raw copper with the coal, waits for the process to finish, and finally confirms that the expected number of copper ingots were obtained.
+}

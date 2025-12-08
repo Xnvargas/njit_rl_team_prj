@@ -1,0 +1,3 @@
+async function craftStonePickaxe(bot) {
+    // The function checks that the inventory contains at least three cobblestone and two sticks, locates a nearby crafting table or places one against a solid block if missing, then crafts a stone pickaxe and confirms the item was added to the inventory, handling failure cases when materials or placement space are unavailable.
+}

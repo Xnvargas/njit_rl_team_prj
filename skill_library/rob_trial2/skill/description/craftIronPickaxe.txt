@@ -1,0 +1,3 @@
+async function craftIronPickaxe(bot) {
+    // The routine gathers the required materials to craft an iron pickaxe: it checks for at least three iron ingots and, if missing, places a furnace and smelts raw iron using available coal; it then ensures two sticks are present, crafting them from oak planks or logs as needed; it also verifies a crafting table is placed nearby, placing one if absent; finally it crafts the iron pickaxe and confirms its presence in the inventory.
+}

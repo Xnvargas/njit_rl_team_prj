@@ -1,0 +1,3 @@
+async function craftIronLeggings(bot) {
+    // The routine first checks the inventory for at least seven iron ingots, and if insufficient, smelts raw iron using available coal to reach the required amount. It then searches for a nearby crafting table and, if none is found, places one on an adjacent air block. After a crafting table is available, it crafts one set of iron leggings. Finally, it confirms that the leggings appear in the inventory, stopping the process if any step fails.
+}

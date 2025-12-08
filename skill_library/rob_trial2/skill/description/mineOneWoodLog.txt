@@ -1,0 +1,3 @@
+async function mineOneWoodLog(bot) {
+    // The routine attempts to obtain a single wood log by sequentially trying each allowed log type and verifying the inventory after each mining attempt; if none are found nearby, it selects a random horizontal direction and explores for up to a minute, continuously searching for any log block within range, and upon locating one it mines exactly one log of the discovered type.
+}
