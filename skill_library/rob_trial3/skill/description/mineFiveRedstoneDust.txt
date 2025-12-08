@@ -1,0 +1,3 @@
+async function mineFiveRedstoneDust(bot) {
+    // The routine first looks for an iron‑tier or better pickaxe in the inventory and equips it. It then repeatedly searches nearby blocks for redstone ore (including deepslate variants) within a 32‑block radius. If no ore is found, it moves in random directions to explore until ore is located. Each discovered ore block is mined and the inventory count of redstone dust is updated. The loop continues until the bot has collected at least five redstone dust, after which the task is considered complete.
+}

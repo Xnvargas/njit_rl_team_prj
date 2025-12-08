@@ -1,0 +1,3 @@
+async function mineEightIronIngot(bot) {
+    // The function ensures the bot has at least eight iron ingots by checking the current ingot count, equipping a suitable pickaxe, placing a furnace if none is found, mining the needed iron ore, smelting the raw iron using available coal, and finally confirming the final ingot total.
+}

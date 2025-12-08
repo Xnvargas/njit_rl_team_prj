@@ -1,0 +1,3 @@
+async function mineFiveGoldOre(bot) {
+    // The routine first verifies that an iron pickaxe is present and equips it, then repeatedly searches for nearby gold ore blocks—exploring in random directions when none are initially found—and mines the required number of blocks to reach a target of five gold ore, repeating this process up to a safety‑limited number of attempts before finally confirming whether the target amount was successfully collected.
+}

@@ -1,0 +1,3 @@
+async function smeltFiveRawCopper(bot) {
+    // The routine checks that the bot has at least five raw copper, locates or places a furnace nearby, verifies that there are enough sticks for fuel, moves the bot within one block of the furnace, and then smelts exactly five raw copper into copper ingots.
+}

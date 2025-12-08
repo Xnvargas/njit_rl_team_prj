@@ -1,0 +1,3 @@
+async function ensureLightningRod(bot) {
+    // The routine first checks if a lightning rod is already in the inventory and exits if found; otherwise it gathers at least three copper ingots by locating and mining copper ore, smelting the raw copper with coal as needed. It then ensures a crafting table is available, placing one on a free air block near solid ground if none is nearby. After moving within one block of the table, it crafts a lightning rod using the collected ingots. Finally it confirms that the lightning rod now resides in the inventory.
+}

@@ -1,0 +1,3 @@
+async function mineFourIronOre(bot) {
+    // The routine first checks the inventory for any pickaxe and, if none is present, gathers cobblestone, sticks, and wood, places a crafting table if needed, and crafts a stone pickaxe. It then ensures the pickaxe is equipped. It repeatedly searches for iron ore within a short range, and when none is found it explores in random directions until ore is located. Each found ore block is mined individually, incrementing a counter toward four. The loop continues until four iron ore blocks have been collected. The process then terminates.
+}

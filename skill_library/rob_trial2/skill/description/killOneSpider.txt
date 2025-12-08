@@ -1,0 +1,3 @@
+async function killOneSpider(bot) {
+    // The function first ensures the bot has an appropriate weapon, preferring swords and falling back to pickaxes, and crafts a wooden sword if none is available, then equips it; it searches for a spider within a set distance and, if none is found, explores randomly until a spider appears; once a spider is located, the bot attacks and kills it; finally, it verifies that no spider remains nearby to confirm the kill.
+}

@@ -1,0 +1,3 @@
+async function mineFiveCopperOre(bot) {
+    // The function ensures the bot has at least five raw copper items by first checking the current inventory count; if insufficient, it searches for a stone‑tier or better pickaxe, crafting a wooden one as a fallback and then equips it; it repeatedly looks for copper ore blocks within a short range and, if none are found, explores in random directions until ore is located; once ore is found it mines the needed number of blocks, updating the raw copper count after each attempt; this loop continues until the inventory contains five or more raw copper items.
+}

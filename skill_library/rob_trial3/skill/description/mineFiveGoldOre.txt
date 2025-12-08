@@ -1,0 +1,3 @@
+async function mineFiveGoldOre(bot) {
+    // The routine first checks that the bot has an iron‑or‑better pickaxe equipped. It then guarantees at least five pieces of coal are available for smelting, mining more if necessary. It searches for gold ore within a 32‑block radius and, if none is found, explores randomly until a vein is located. After mining at least five gold ore blocks and confirming sufficient raw gold, it ensures a furnace is present nearby, places one if needed, and moves the bot next to it. Finally, it smelts the raw gold into ingots and reports whether at least five gold ingots were obtained.
+}

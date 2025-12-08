@@ -1,0 +1,3 @@
+async function craftStonePickaxe(bot) {
+    // The function first checks if a stone pickaxe is already in the inventory and exits if so; otherwise it ensures at least three cobblestones are present, mining stone blocks as needed, and gathers enough sticks by crafting planks from logs if required; it then guarantees a crafting table is available nearby, either by locating an existing one or by finding a free air spot and placing a new table, exploring the area when necessary; once all materials and the table are ready, it crafts the stone pickaxe; finally it verifies that the stone pickaxe was successfully added to the inventory.
+}

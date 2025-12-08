@@ -1,0 +1,3 @@
+async function craftClock(bot) {
+    // The routine checks that the inventory contains at least four gold ingots and one redstone dust, then looks for a nearby crafting table; if none is found it retrieves one from a known chest, finds an empty adjacent air block, and places the table there, confirming its placement before proceeding to craft a single clock using the crafting grid, refreshing the inventory, and finally verifying that the clock item now exists in the inventory.
+}

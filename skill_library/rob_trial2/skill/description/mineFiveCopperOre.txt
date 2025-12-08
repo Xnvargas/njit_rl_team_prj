@@ -1,0 +1,3 @@
+async function mineFiveCopperOre(bot) {
+    // The function first checks the inventory for the best available pickaxe (diamond down to wooden) and equips it, then repeatedly searches for copper ore blocks within a set distance, exploring in random directions if none are initially found; when ore is located it mines enough blocks to reach at least five raw copper, pausing briefly for inventory updates, and continues this loop until the target count is met or no more ore can be found, after which it evaluates the final raw copper amount to determine if the goal was achieved.
+}

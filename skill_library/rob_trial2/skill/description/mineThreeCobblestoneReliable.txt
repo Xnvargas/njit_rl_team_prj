@@ -1,0 +1,3 @@
+async function mineThreeCobblestoneReliable(bot) {
+    // The routine first checks if the inventory already holds at least three cobblestone, then ensures a pickaxe is equipped by crafting planks, sticks, a crafting table, and a wooden pickaxe when needed; it repeatedly searches for stone blocks, explores in random directions if none are nearby, mines one stone block per attempt while updating the cobblestone count until three are obtained or a safety limit of attempts is reached, and finally verifies the final count to determine whether the task succeeded.
+}

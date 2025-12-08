@@ -1,0 +1,3 @@
+async function mineEightCobblestone(bot) {
+    // The routine guarantees the bot ends with at least eight cobblestone by first checking the current cobblestone count, then ensuring a pickaxe is available (crafting a wooden one if necessary, including gathering planks and sticks), searching for stone blocks within a 32‑block radius and exploring further if none are found, mining the required number of stone blocks to reach the target amount, and finally confirming that the inventory now contains eight or more cobblestone.
+}

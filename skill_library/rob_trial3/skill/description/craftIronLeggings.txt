@@ -1,0 +1,3 @@
+async function craftIronLeggings(bot) {
+    // The routine verifies the inventory contains at least seven iron ingots, locates a crafting table within 32 blocks or places one on a free air spot above a solid block, moves the bot to stand next to the table, and then crafts a single set of iron leggings.
+}

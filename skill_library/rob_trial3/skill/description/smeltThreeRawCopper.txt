@@ -1,0 +1,3 @@
+async function smeltThreeRawCopper(bot) {
+    // The routine verifies that at least three raw copper items are in the inventory, locates or places a furnace nearby, ensures a lava bucket is available (filling an empty bucket from a lava source when needed), then smelts three raw copper pieces one by one using the furnace with lava as fuel, refilling the bucket between cycles if necessary, and finally reports the total copper ingots obtained.
+}

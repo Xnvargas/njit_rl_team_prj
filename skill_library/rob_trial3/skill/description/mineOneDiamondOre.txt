@@ -1,0 +1,3 @@
+async function mineOneDiamondOre(bot) {
+    // The routine first equips an iron‑or‑better pickaxe, ensures sufficient food and health, and eliminates any nearby hostile mob; it then searches for a diamond ore block (including deepslate), exploring randomly if needed, and moves the bot adjacent to the located ore; after positioning, it mines exactly one diamond ore block; finally it checks the inventory for diamonds and confirms success if any are obtained.
+}

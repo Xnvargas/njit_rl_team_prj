@@ -1,0 +1,3 @@
+async function craftFishingRod(bot) {
+    // The function first guarantees the bot possesses at least three sticks and the required strings, then ensures a crafting table is present nearby (placing one if needed), proceeds to craft a fishing rod using that table, waits briefly for the crafting to complete, and finally verifies the inventory to confirm the fishing rod was successfully created.
+}

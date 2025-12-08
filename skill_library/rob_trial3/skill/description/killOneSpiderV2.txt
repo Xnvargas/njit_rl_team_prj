@@ -1,0 +1,3 @@
+async function killOneSpider(bot) {
+    // The routine first looks for any sword in the inventory, preferring higher‑tier weapons, and aborts if none are found. It then equips the discovered sword. It searches for a spider within a short radius and, if none is nearby, moves around randomly until one appears or a timeout occurs. Once a spider is located, it attempts to kill it using combat logic, reporting success or failure. Errors during equipping or combat cause the process to stop.
+}

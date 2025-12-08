@@ -1,0 +1,3 @@
+async function gatherFiveCocoaBeans(bot) {
+    // The function repeatedly searches for cocoa pods, explores random horizontal directions when none are nearby, harvests each found pod, pauses briefly to register drops, and continues looping until the inventory contains at least five cocoa beans.
+}

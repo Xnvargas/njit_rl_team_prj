@@ -1,0 +1,3 @@
+async function craftFourSticks(bot) {
+    // The routine checks the inventory for oak planks and logs, crafts missing planks from logs, then crafts sticks from planks until at least four sticks are present, and finally verifies if the stick count meets the requirement.
+}

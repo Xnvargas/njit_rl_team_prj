@@ -1,0 +1,3 @@
+async function smeltTenRawIron(bot) {
+    // The function first verifies the inventory contains at least ten raw iron, then ensures a furnace block is available (placing one if necessary), calculates a fuel plan using available coal, oak logs, and oak planks to cover the ten smelts, executes the smelting according to that plan, and finally confirms that ten or more iron ingots were obtained.
+}

@@ -1,0 +1,3 @@
+async function craftFourArrowsSafe(bot) {
+    // The routine first restores health by eating cod when below a threshold, then ensures a crafting table is available, placing one on a free nearby block if needed; it next gathers required materials by mining gravel for flint, crafting planks from any log and then sticks, and confirming feather availability; after confirming sufficient resources it crafts the needed number of arrows to reach at least four, using the appropriate recipe count; finally it verifies the arrow count to confirm success.
+}

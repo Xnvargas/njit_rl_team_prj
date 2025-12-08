@@ -1,0 +1,3 @@
+async function placeChestNearby(bot) {
+    // The routine first looks for an already placed chest within a short radius and aborts if one is found. It then verifies that the inventory contains a chest item before proceeding. It searches for a solid block nearby and examines the six adjacent positions to locate an empty air block, moving or exploring further if necessary, up to several attempts. Once a suitable free spot is identified, it places the chest item at that location. Finally, it confirms that the chest now exists within the vicinity.
+}

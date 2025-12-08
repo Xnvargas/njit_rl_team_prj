@@ -1,0 +1,3 @@
+async function obtainThreeJungleLogs(bot) {
+    // The routine gathers three jungle logs for the bot, first checking the inventory and exiting early if enough are already present; it then ensures a suitable tool (pickaxe or axe) is equipped, crafting a wooden axe if needed; using the tool it repeatedly attempts to mine the required logs, and if insufficient logs are found it explores in a random horizontal direction and retries, up to a safety‑limited number of attempts; after each mining or exploration cycle it updates the log count; finally it reports whether the goal was achieved or how many logs were collected after the attempts.
+}

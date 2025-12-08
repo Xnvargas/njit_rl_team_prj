@@ -1,0 +1,3 @@
+async function craftCompass(bot) {
+    // The routine first checks whether a compass is already in the inventory and aborts if found. It then confirms the presence of at least four iron ingots and one redstone, stopping if the required materials are missing. If no crafting table is nearby, it locates a suitable free spot, places a crafting table there, and records its position. The bot navigates to a position adjacent to the crafting table. Using the table it crafts one compass. Finally it verifies that the newly crafted compass appears in the inventory.
+}

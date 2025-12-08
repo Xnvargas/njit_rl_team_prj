@@ -1,0 +1,3 @@
+async function craftIronBoots(bot) {
+    // The routine first checks the inventory for at least four iron ingots and, if insufficient, repeatedly smelts raw iron using coal until the required amount is obtained. It then searches for a nearby placed crafting table; if none is found, it locates a suitable air block above solid ground, places a crafting table there, and updates the reference. After positioning the bot within one block of the table, it opens the crafting interface and creates one pair of iron boots. Finally, it confirms that the crafted boots appear in the inventory.
+}

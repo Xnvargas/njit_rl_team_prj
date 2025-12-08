@@ -1,0 +1,3 @@
+async function craftOneCopperBlock(bot) {
+    // The routine checks the inventory for at least nine copper ingots, smelts raw copper into ingots using a furnace if needed (placing a furnace when none is found), ensures a crafting table is present by placing one if absent, then crafts a single copper block and verifies that the block now exists in the inventory.
+}

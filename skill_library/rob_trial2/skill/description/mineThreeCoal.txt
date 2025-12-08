@@ -1,0 +1,3 @@
+async function mineThreeCoal(bot) {
+    // The function first equips the best available pickaxe from the bot’s inventory, then repeatedly searches for coal ore within a 32‑block radius, exploring in random directions if none is initially found, and mines ore blocks until the inventory holds at least three coal items or a safety limit of attempts is reached, pausing briefly after each mine for inventory updates, and finally checks the coal count to determine whether the mining goal was successfully met.
+}

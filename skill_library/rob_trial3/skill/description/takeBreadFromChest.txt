@@ -1,0 +1,3 @@
+async function takeBreadFromChest(bot) {
+    // The routine moves the bot to the chest located at (-11, 31, ‑62), attempts to withdraw a full stack of bread, ensures the bot reaches the chest before extraction, and handles any errors that occur, indicating whether the bread was successfully taken.
+}

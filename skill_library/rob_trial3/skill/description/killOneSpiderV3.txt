@@ -1,0 +1,3 @@
+async function killOneSpider(bot) {
+    // The routine first checks the inventory for an iron sword and aborts if none is present. It then searches for a spider within 32 blocks; if none is found it explores in random directions for up to a minute until a spider appears. Once a spider is detected, the sword is equipped and the bot moves toward the target. The bot then attacks the spider using a mob‑killing helper, waiting until the entity is dead. Any failure to locate or defeat the spider causes the function to exit early.
+}

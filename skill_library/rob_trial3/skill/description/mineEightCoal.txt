@@ -1,0 +1,3 @@
+async function mineEightCoal(bot) {
+    // The routine first checks how many coal items are already in the inventory and aborts if eight or more are present. It then looks for a stone‑tier or better pickaxe, crafting a wooden one only as a last resort, and equips the found tool. Afterwards it repeatedly searches for coal ore blocks within a short radius, and if none are found it explores in random directions until ore is located. Once ore is found it mines the necessary amount of blocks, updating the coal count after each batch. The loop continues until the inventory holds at least eight coal, at which point the task is considered complete.
+}

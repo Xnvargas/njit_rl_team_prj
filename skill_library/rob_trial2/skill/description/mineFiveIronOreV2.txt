@@ -1,0 +1,3 @@
+async function mineFiveIronOre(bot) {
+    // The routine first ensures a stone‑or‑better pickaxe is equipped, crafting a stone pickaxe and any required sticks if necessary, then repeatedly searches for iron ore within a 32‑block radius, exploring random horizontal directions when none is initially found, and mines the needed blocks until the inventory contains at least five raw iron, looping until that goal is reached and finally confirming successful acquisition.
+}

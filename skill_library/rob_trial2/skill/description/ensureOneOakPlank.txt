@@ -1,0 +1,3 @@
+async function ensureOneOakPlank(bot) {
+    // The routine guarantees the bot possesses at least one oak plank; it first checks the inventory for existing planks, then ensures an oak log is available by searching nearby or exploring until one is found and mining it if necessary, verifies a crafting table is present and places one nearby if needed, crafts oak planks using the table, and finally confirms that the inventory now contains at least one oak plank.
+}

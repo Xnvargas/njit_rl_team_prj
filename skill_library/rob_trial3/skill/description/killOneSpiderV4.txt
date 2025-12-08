@@ -1,0 +1,3 @@
+async function killOneSpider(bot) {
+    // The routine searches for a spider within 32 blocks, and if none is detected it explores in random directions until one appears. Once a spider is located, it moves the bot to within two blocks of the target. It then initiates an attack on the spider with a generous timeout. After the attack completes, it checks the surroundings to confirm the spider is no longer present. If the spider remains, it reports a failure; otherwise it reports success.
+}
